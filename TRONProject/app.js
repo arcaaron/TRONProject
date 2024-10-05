@@ -9,7 +9,6 @@ async function initializeTronWeb() {
     if (window.tronWeb) {
         tronWeb = window.tronWeb;
     } else {
-        alert("Please install TronLink to use this DApp!");
         return;
     }
 }
