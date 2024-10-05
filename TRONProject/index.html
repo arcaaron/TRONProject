@@ -88,6 +88,7 @@
             </div>
             <img src = "./assets/arrow.png" alt = "Arrow Icon" class = "icon arrow" onclick = "location.href = './#mission'"/>
         </section>
+
         <section id = "mission">
             <h1 class = "title"> Our Mission </h1>
             <div class = "info-details-container">
@@ -100,52 +101,54 @@
                             prisoners are paid fairly, resulting in a better working environment.
                         </p>
                     </div>
+                    <div class = "details-container">
+                        <h2 class = "info-sub-title"> Why Crypto? </h2>
+                        <p>
+                            A cryptocurrency system could bring transparency, ensuring all payments between prisons 
+                            and inmates are tracked, reducing exploitation. This would create a fairer, more accountable system 
+                            for compensating prisoners' work. 
+                        </p>
+                    </div>  
+
+                    
                 </div>
-            </div>
 
-            <p>
-                A cryptocurrency system could bring transparency, ensuring all payments between prisons 
-                and inmates are tracked, reducing exploitation. This would create a fairer, more accountable system 
-                for compensating prisoners' work. 
-            </p>
-
+            <section id = "demo"> 
+            <h1 class = "title"> Demo Application </h1>
             <div class = "demo-details-container">
                 <div class = "demo-containers">
                     <div class = "details-container">
-                        <h2 class = "info-sub-title"> HEADER HERE </h2>
+                        <h2 class = "info-sub-title"> Prison Management </h2>
                         <div class = "demo-container"></div>
                             <article>
-                                <img src = "./assets/.png" alt = " Icon" class = "icon"/>
-                                <h3> (HEADER HERE) </h3>
-                                <p> TEXT HERE!
-                                </p>
-                            </article>
-                            <article>
-                                <img src = "./assets/.png" alt = " Icon" class = "icon"/>
-                                <h3> (HEADER HERE) </h3>
-                                <p> TEXT HERE!
-                                </p>
-                            </article>
-                            <article>
-                                <img src = "./assets/.png" alt = " Icon" class = "icon"/>
-                                <h3> (HEADER HERE) </h3>
-                                <p> TEXT HERE!
-                                </p>
-                            </article>
-                            <article>
-                                <img src = "./assets/.png" alt = " Icon" class = "icon"/>
-                                <h3> (HEADER HERE) </h3>
-                                <p> TEXT HERE!
-                                </p>
+                                <h2>Add Name</h2>
+                                <input type="text" id="prisonerName" placeholder="Prisoner Name" />
+                                <button id="addPrisonerBtn">Add Name ID</button>
+                            
+                                <h2>Fund</h2>
+                                <input type="number" id="fundPrisonerId" placeholder="Prisoner ID" />
+                                <input type="number" id="fundAmount" placeholder="Amount (TRX)" />
+                                <button id="fundPrisonerBtn">Fund: Name ID</button>
+                            
+                                <h2>Withdraw</h2>
+                                <input type="number" id="withdrawPrisonerId" placeholder="Prisoner ID" />
+                                <input type="number" id="withdrawAmount" placeholder="Withdraw Amount (TRX)" />
+                                <button id="withdrawBtn">Withdraw</button>
+                            
+                                <script src="app.js"></script>
+                                <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                                <script src="script.js"></script>
                             </article>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
+
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-        <script src="script.js"></script>
+        <script src="scriptv2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/tronweb@latest/dist/TronWeb.js"></script>"
+    
+        </div>
     </body>
 </html>

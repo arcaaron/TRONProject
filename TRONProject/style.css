@@ -313,4 +313,79 @@ section {
     position: relative;
 }
 
+/* Demo Section */
+#demo {
+    padding-top: 4vh;
+    margin: 0 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    min-height: fit-content;
+    box-sizing: border-box;
+}
+
+#demo .title {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.demo-details-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.demo-containers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.details-container {
+    background: white;
+    border-radius: 2rem;
+    border: 0.1rem solid rgb(163,163,163);
+    text-align: center;
+    padding: 1rem;
+    flex: 1;
+    max-width: 90%;
+}
+
+.details-container h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.details-container p {
+    font-size: 1.1rem;
+}
+
+.details-container input[type="text"],
+.details-container input[type="number"] {
+    width: 90%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: 0.1rem solid rgb(163,163,163);
+}
+
+.details-container button {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 1rem;
+    background: rgb(53,53,53);
+    color: white;
+    cursor: pointer;
+}
+
+.details-container button:hover {
+    background: rgb(0, 0, 0);
+}
+
+
 
