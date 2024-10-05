@@ -7,8 +7,11 @@
         <title>PrisonCoin</title>
         <link rel = "stylesheet" href = "style.css">
         <link rel = "stylesheet" href = "mediaqueries.css">
+        <script src="https://cdn.jsdelivr.net/npm/tronweb/dist/TronWeb.js"></script>
     </head>
     <body>
+        <p>Current Count: <span id="count">0</span></p>
+        <button id="incrementBtn">Increment</button>
         <nav id = "desktop-nav"> 
             <div class = "logo"> PrisonCoin </div>
             <div>
@@ -155,8 +158,24 @@
             </div>
 
         </section>
+        <h1>Prison Management DApp</h1>
+    
+        <h2>Add Prisoner</h2>
+        <input type="text" id="prisonerName" placeholder="Prisoner Name" />
+        <button id="addPrisonerBtn">Add Prisoner</button>
+    
+        <h2>Fund Prisoner</h2>
+        <input type="number" id="fundPrisonerId" placeholder="Prisoner ID" />
+        <input type="number" id="fundAmount" placeholder="Amount (TRX)" />
+        <button id="fundPrisonerBtn">Fund Prisoner</button>
+    
+        <h2>Withdraw Funds</h2>
+        <input type="number" id="withdrawPrisonerId" placeholder="Prisoner ID" />
+        <input type="number" id="withdrawAmount" placeholder="Withdraw Amount (TRX)" />
+        <button id="withdrawBtn">Withdraw</button>
+    
+        <script src="app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tronweb@latest/dist/TronWeb.js"></script>"
     </body>
 </html>
