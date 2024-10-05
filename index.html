@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PrisonCoin</title>
+        <link rel = "stylesheet" href = "style.css">
+        <link rel = "stylesheet" href = "mediaqueries.css">
+    </head>
+    <body>
+        <nav id = "desktop-nav"> 
+            <div class = "logo"> PrisonCoin </div>
+            <div>
+                <ul class = "nav-links">
+                    <li><a href = "#info">Information</a></li>
+                    <li><a href = "#mission">Mission</a></li>
+                    <li><a href = "#demo">Demo</a></li>
+                    <li><a href = "#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <nav id = "hamburger-nav">
+            <div class = "logo"> PrisonCoin </div>
+            <div class = "hamburger-menu"> 
+                <div class = "hamburger-icon" onclick = "toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class = "menu-links">
+                    <li><a href = "#info" onclick = "toggleMenu()">Information</a></li>
+                    <li><a href = "#mission" onclick = "toggleMenu()">Mission</a></li>
+                    <li><a href = "#demo" onclick = "toggleMenu()">Demo</a></li>
+                    <li><a href = "#contact" onclick = "toggleMenu()">Contact</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <section id = "profile">
+            <div class = "section__pic-container">
+                <img src = "./assets/PrisonCoin_logo.png" alt = "PrisonCoin logo Here">
+            </div>
+            <div class = "section__text">
+                <p class = "section__text__p1"> Welcome to </p>
+                <h1 class = "title"> PrisonCoin </h1>
+                <p class = "section__text__p2"> the next step to transparency</p>
+            </div>
+        </section>
+        <img src = "./assets/arrow.png" alt = "Arrow Icon" class = "icon arrow1" onclick = "location.href = './#info'"/>
+
+        <section id="info">
+            <h1 class = "title"> Why PrisonCoin </h1>
+            <img src = "./assets/arrow.png" alt = "Arrow Icon" class = "icon arrow2" onclick = "location.href = './#mission'"/>
+
+            <div class = "info-details-container">
+                <div class = "about-containers">
+                    <div class = "details-container">
+                        <h2 class = "info-sub-title"> What issues we face </h2>
+                        <p>
+                            Wage disparity in prisons is a major issue, with inmates earning extremely low wages for their
+                             labor. By using PrisonCoin, we can combat pay disparities and ensure 
+                            prisoners are paid fairly, resulting in a better working environment.
+                        </p>
+                    </div>
+                    <div class = "details-container">
+                        <h2 class = "info-sub-title"> Why Crypto? </h2>
+                        <p>
+                            A cryptocurrency system could bring transparency, ensuring all payments between prisons 
+                            and inmates are tracked, reducing exploitation. This would create a fairer, more accountable system 
+                            for compensating prisoners' work. 
+                        </p>
+                    </div> 
+                </div>
+                <p>
+                    At PrisonCoin, our mission is to ensure every prisoner is given the opportunity to earn a fair wage and 
+                    receive benefits, even while incarcerated. We believe in the dignity of work and that everyone deserves to be 
+                    compensated justly, regardless of their circumstances. Our innovative technology seeks to bring transparency and 
+                    fairness into the prison system, ensuring that inmates are treated with respect and their labor is valued. Through 
+                    PrisonCoin, we aim to create a more equitable environment, fostering hope and opportunity for all prisoners.
+                </p>
+        </section>
+
+        <section id = "mission">
+            <h1 class = "title"> Our Mission </h1>
+            <div class = "section-container">
+                <div class = "about-details-container">
+                    <div class = "about-containers">
+                        <div class = "details-container">
+                            <img src = "./assets/wagedisparity.png" alt = "Wage Disparity" class = "icon"/>
+                            <h3>Wage Disparity</h3>
+                            <p> The prison system exploits prisoners with unfair wages. By leveraging blockchain technology, 
+                                we can ensure transparency, making wages public and promoting a fair working environment. 
+                                This system fosters honesty and equity within prisons. </p>
+                        </div>
+                        <div class = "details-container">
+                            <img src = "./assets/transparency.png" alt = "Transparency Icon" class = "icon"/>
+                            <h3> Transparency </h3>
+                            <p> By leveraging blockchain technology, prisoners' wages can be publicly viewed, 
+                                ensuring transparency within the prison system and promoting a fair, honest, and 
+                                accountable working environment for all involved. </p>
+                        </div>
+                        <div class = "details-container">
+                            <img src = "./assets/secure.png" alt = "Secure" class = "icon"/>
+                            <h3> Security </h3>
+                            <p> Blockchain technology ensures transparency by securely tracking all transactions, 
+                                allowing for comprehensive monitoring of any movement of funds and fostering 
+                                trust through verifiable, real-time auditing.  </p>
+                        </div>
+                        <div class = "details-container">
+                            <img src = "./assets/fast.png" alt = "Fast" class = "icon"/>
+                            <h3> Fast Balance Changes </h3>
+                            <p> Payments are swift and secure. By leveraging advanced payment methods, 
+                                we eliminate the glitches and errors of the current system, 
+                                ensuring transactions are instantaneous and reflect immediately.  </p>
+                        </div>
+                        <img src = "./assets/arrow.png" alt = "Arrow Icon" class = "icon arrow3" onclick = "location.href = './#demo'"/>
+                    </div>
+                </div>
+            </div>
+
+
+            <section id = "demo"> 
+            <h1 class = "title"> Demo Application </h1>
+            <div class = "demo-details-container">
+                <div class = "demo-containers">
+                    <div class = "details-container">
+                        <h2 class = "info-sub-title"> Prison Management </h2>
+                        <div class = "demo-container"></div>
+                            <article>
+                                <h2>Add Name</h2>
+                                <input type="text" id="prisonerName" placeholder="Prisoner Name" />
+                                <button id="addPrisonerBtn">Add Name ID</button>
+                            
+                                <h2>Fund</h2>
+                                <input type="number" id="fundPrisonerId" placeholder="Prisoner ID" />
+                                <input type="number" id="fundAmount" placeholder="Amount (TRX)" />
+                                <button id="fundPrisonerBtn">Fund: Name ID</button>
+                            
+                                <h2>Withdraw</h2>
+                                <input type="number" id="withdrawPrisonerId" placeholder="Prisoner ID" />
+                                <input type="number" id="withdrawAmount" placeholder="Withdraw Amount (TRX)" />
+                                <button id="withdrawBtn">Withdraw</button>
+                            
+                                <script src="app.js"></script>
+                                <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+                                <script src="script.js"></script>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id = "contact-us">
+            <h1 class = "title"> Contact Us </h1>
+            <div class = "section-container">
+                <div class = "about-details-container">
+                    <div class = "about-containers">
+                        <div class = "details-container">
+                            <h3>Sorry!</h3>
+                            <p> This section of the site is not set up.
+                            </p>
+                        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="scriptv2.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tronweb@latest/dist/TronWeb.js"></script>"
+    
+        </div>
+    </body>
+</html>
