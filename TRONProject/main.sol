@@ -1,82 +1,93 @@
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.21;
 
-abstract contract Context {
-    function _msgSender() internal view virtual returns (address) {
-        return msg.sender;
-    }
-
-    function _msgValue() internal view virtual returns (uint256) {
-        return msg.value;
-    }
+interface IERC20 {
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address recipient, uint256 amount)
+        external
+        returns (bool);
+    function allowance(address owner, address spender)
+        external
+        view
+        returns (uint256);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount)
+        external
+        returns (bool);
 }
 
-abstract contract Owner is Context {
-    address public owner;
 
-    constructor() {
-        owner = _msgSender();
+contract PrisonCoin is IERC20 {
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(
+        address indexed owner, address indexed spender, uint256 value
+    );
+
+    uint256 public totalSupply;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+    string public name;
+    string public symbol;
+    uint8 public decimals;
+
+    constructor(string memory _name, string memory _symbol, uint8 _decimals) {
+        name = _name; 
+        symbol = _symbol; 
+        decimals = _decimals;
     }
 
-    modifier onlyOwner() {
-        require(_msgSender() == owner, "Not the contract owner");
-        _;
-    }
-}
 
-contract PrisonManagement is Owner {
-    struct Prisoner {
-        string name;
-        uint256 id;
-        uint256 amount; // TRX balance
-    }
-
-    uint256 public prisonerId;
-    mapping(uint256 => Prisoner) public prisoners;
-
-    event NewPrisoner(uint256 indexed id, string name);
-    event FundPrisoner(uint256 indexed id, uint256 amount);
-    event Withdraw(uint256 indexed id, uint256 amount);
-
-    function addPrisoner(string memory name) public onlyOwner returns (uint256) {
-        require(bytes(name).length > 0, "Name cannot be empty"); // Added validation for empty name
-        Prisoner memory newPrisoner = Prisoner(name, prisonerId, 0);
-        prisoners[prisonerId] = newPrisoner;
-        
-        emit NewPrisoner(prisonerId, name);
-        prisonerId++;
-
-        return prisonerId - 1; // return the ID of the newly added prisoner
-    }
-
-    function fundPrisoner(uint256 id) public payable returns (bool) {
-        require(msg.value > 0, "Must send TRX");
-        require(prisoners[id].id == id, "Prisoner does not exist");
-
-        prisoners[id].amount += msg.value;
-
-        emit FundPrisoner(id, msg.value);
+    function transfer(address recipient, uint256 amount)
+        external
+        returns (bool)
+    {
+        balanceOf[msg.sender] -= amount;
+        balanceOf[recipient] += amount;
+        emit Transfer(msg.sender, recipient, amount);
         return true;
     }
 
-    function withdraw(uint256 id, uint256 amount) public returns (bool) {
-        require(prisoners[id].id == id, "Prisoner does not exist");
-        require(prisoners[id].amount >= amount, "Insufficient funds");
-
-        prisoners[id].amount -= amount;
-
-        _sendTRX(_msgSender(), amount);
-
-        emit Withdraw(id, amount);
+    function approve(address spender, uint256 amount) external returns (bool) {
+        allowance[msg.sender][spender] = amount;
+        emit Approval(msg.sender, spender, amount);
         return true;
     }
 
-    function checkBalance(uint256 id) public view returns (uint256) {
-        require(prisoners[id].id == id, "Prisoner does not exist");
-        return prisoners[id].amount;
+    function transferFrom(address sender, address recipient, uint256 amount)
+        external
+        returns (bool)
+    {
+        allowance[sender][msg.sender] -= amount;
+        balanceOf[sender] -= amount;
+        balanceOf[recipient] += amount;
+        emit Transfer(sender, recipient, amount);
+        return true;
     }
 
-    function _sendTRX(address receiver, uint256 value) internal {
-        payable(receiver).transfer(value);
+    function _mint(address to, uint256 amount) internal {
+        balanceOf[to] += amount;
+        totalSupply += amount;
+        emit Transfer(address(0), to, amount);
+    }
+
+    function _burn(address from, uint256 amount) internal {
+        balanceOf[from] -= amount;
+        totalSupply -= amount;
+        emit Transfer(from, address(0), amount);
+    }
+
+    function mint(address to, uint256 amount) external {
+        _mint(to, amount);
+    }
+
+    function burn(address from, uint256 amount) external {
+        _burn(from, amount);
     }
 }
+
+
+
+
+
+
