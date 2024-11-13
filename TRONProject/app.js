@@ -1,6 +1,5 @@
-const contractAddress = "TEp99ZcHXiSkN2DNUTaNXrKghYmWysSuQy"; // Replace with your deployed contract address
+const contractAddress = "TEp99ZcHXiSkN2DNUTaNXrKghYmWysSuQy"; 
 const abi = [
-		"abi": [
 			{
 				"inputs": [
 					{
@@ -280,25 +279,39 @@ const abi = [
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
-		],
-];
+	]
 
+let tronWebInitialized = false;
 let tronWeb;
 
-async function initializeTronWeb() {
-    if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
-        tronWeb = window.tronWeb;
-        document.getElementById("status").innerText = "Connected to TronLink!";
-        
-        // Enable features dependent on TronLink
-        document.getElementById("interactButton").disabled = false;
-    } else {
-        alert("Please install TronLink and log in.");
-        document.getElementById("status").innerText = "TronLink not connected.";
-    }
-}
+	async function connectTronLink() {
+		const statusMessage = document.getElementById("statusMessage");
+	
+		if (window.tronLink && window.tronLink.ready) {
+			try {
+				const address = await window.tronLink.request({ method: 'tron_requestAccounts' });
+				console.log("TronLink address: ", address);
+	
+				if (address && address[0]) {
+					statusMessage.innerText = `Connected to TronLink with address: ${address[0]}`;
+				} else {
+					statusMessage.innerText = "Please log in to your TronLink wallet.";
+				}
+			} catch (error) {
+				console.error("Error connecting to TronLink:", error);
+				statusMessage.innerText = "Error connecting to TronLink.";
+				alert("Error connecting to TronLink.");
+			}
+		} else {
+			statusMessage.innerText = "TronLink not detected. Please install TronLink.";
+			alert("TronLink not detected. Please install the TronLink extension and try again.");
+		}
+	}
+	
+	document.getElementById("connectButton").onclick = connectTronLink;
+	
 
-window.onload = initializeTronWeb;
+	
 
 
 async function addPrisoner() {
