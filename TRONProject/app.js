@@ -6,9 +6,10 @@ const abi = [
 let tronWeb;
 
 async function initializeTronWeb() {
-    if (window.tronWeb) {
+    if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
         tronWeb = window.tronWeb;
     } else {
+        alert("Please install TronLink and log in.");
         return;
     }
 }
@@ -38,8 +39,8 @@ async function fundPrisoner() {
     const prisonerId = document.getElementById("fundPrisonerId").value;
     const amount = document.getElementById("fundAmount").value;
 
-    if (!prisonerId || !amount) {
-        alert("Please provide both prisoner ID and amount!");
+    if (!prisonerId || !amount || isNaN(amount) || amount <= 0) {
+        alert("Please provide both a valid prisoner ID and a positive amount!");
         return;
     }
 
@@ -61,8 +62,8 @@ async function withdraw() {
     const prisonerId = document.getElementById("withdrawPrisonerId").value;
     const amount = document.getElementById("withdrawAmount").value;
 
-    if (!prisonerId || !amount) {
-        alert("Please provide both prisoner ID and amount!");
+    if (!prisonerId || !amount || isNaN(amount) || amount <= 0) {
+        alert("Please provide both a valid prisoner ID and a positive amount!");
         return;
     }
 
@@ -79,8 +80,9 @@ async function withdraw() {
     }
 }
 
-document.getElementById("addPrisonerBtn").onclick = addPrisoner;
-document.getElementById("fundPrisonerBtn").onclick = fundPrisoner;
-document.getElementById("withdrawBtn").onclick = withdraw;
-
-initializeTronWeb();
+window.onload = () => {
+    document.getElementById("addPrisonerBtn").onclick = addPrisoner;
+    document.getElementById("fundPrisonerBtn").onclick = fundPrisoner;
+    document.getElementById("withdrawBtn").onclick = withdraw;
+    initializeTronWeb();
+};
