@@ -8,11 +8,18 @@ let tronWeb;
 async function initializeTronWeb() {
     if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
         tronWeb = window.tronWeb;
+        document.getElementById("status").innerText = "Connected to TronLink!";
+        
+        // Enable features dependent on TronLink
+        document.getElementById("interactButton").disabled = false;
     } else {
         alert("Please install TronLink and log in.");
-        return;
+        document.getElementById("status").innerText = "TronLink not connected.";
     }
 }
+
+window.onload = initializeTronWeb;
+
 
 async function addPrisoner() {
     const prisonerName = document.getElementById("prisonerName").value;
