@@ -156,6 +156,7 @@ section {
 
 .section-container {
     display: flex;
+    justify-content:center;
 }
 
 /* Profile Section */
@@ -398,6 +399,7 @@ section {
 .details-container button:hover {
     background: rgb(0, 0, 0);
 }
+
 
 
 
